@@ -28,5 +28,25 @@ def io_binary_search(liml: int, limr: int, istream: TextIO, ostream: TextIO, f =
 	return liml
 
 
+
+def function_binary_search(x, liml: int, limr: int, f = None):
+	if f is None:
+		f = lambda x: x
+	
+	while liml < limr-1:
+		index = floor((limr+liml)/2)
+		guess = f(index)
+		
+		if x < guess:
+			limr = index
+		else:
+			liml = index
+	
+
+	return liml
+
+
+
+
 if __name__ == "__main__":
-	print("Result is:", io_binary_search(0, 64, stdin, stdout))
+	print("Result is:", function_binary_search(984516546, 0, 1e10, lambda x: x**2))
