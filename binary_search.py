@@ -3,17 +3,17 @@ from sys import stdin, stdout
 from typing import TextIO
 
 
-def io_binary_search(liml: int, limr: int, input: TextIO, output: TextIO, f = None):
+def io_binary_search(liml: int, limr: int, istream: TextIO, ostream: TextIO, f = None):
 	if f is None:
 		f = lambda x: x
 	while liml < limr-1:
 		index = floor((limr+liml)/2)
 		guess = f(index)
 
-		output.write(str(guess))
-		output.flush()
+		ostream.write(str(guess))
+		ostream.flush()
 
-		result = input.read()
+		result = istream.read()
 		try:
 			result = int(result)
 		except TypeError:
